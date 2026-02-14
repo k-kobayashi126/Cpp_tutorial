@@ -3,14 +3,11 @@
 # コンテナの一覧を書く合図
 services:
   # コンテナの名前
-  python-test:
+  cpp_tutorial:
     # このフォルダにあるDokerfileを使う
     build: .
     # ホストの"."とコンテナ内の"app"を同期（これがないとコンテナを消したらファイルが消える）
     volumes:
-      - .:/app
-    # ホストは"8888"、コンテナ内のjupyterは"8888" -> http://localhost:8888
-    ports:
-      - "8888:8888"
+      - .:/workspace
     # ターミナルを使えるようにする設定
     tty: true

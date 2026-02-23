@@ -58,6 +58,7 @@ int main()
 
     {
         shared_ptr<Car> car = make_shared<Car>();
+        cout << car.use_count() << ecu.use_count() <<endl;
         car->my_ecu = ecu;
         ecu->my_car = car;
 

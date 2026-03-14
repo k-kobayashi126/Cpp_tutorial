@@ -3,27 +3,27 @@
 #include <mutex>
 using namespace std;
 
-int shared_counter = 0;
+int danger_score = 0;
 std::mutex mtx;
 
-void countUp() {
+void analyzeCamera() {
     for (int i=0; i<100000; i++) {
         {
             std::lock_guard<std::mutex> lock(mtx);
-            shared_counter++;
+            danger_score++;
         }
     }
 }
 
 int main()
 {
-    std::thread t1(countUp);
-    std::thread t2(countUp);
+    std::thread t1(analyzeCamera);
+    std::thread t2(analyzeCamera);
 
     t1.join();
     t2.join();
 
-    cout << "最終カウント：" << shared_counter << endl;
+    cout << "最終カウント：" << danger_score << endl;
 
     return 0;
 }
